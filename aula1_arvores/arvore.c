@@ -67,7 +67,7 @@ void pos_ordem(Arvore *raiz){
 
 //========= Exercício 3 - pertence ====
 int pertence_arv(Arvore *a, char c){
-   if(a!=NULL){
+   if(a==NULL){
       return 0;
    }
    else if(a->info == c){
@@ -78,6 +78,12 @@ int pertence_arv(Arvore *a, char c){
 }
 
 //========= Exercício 4 - conta nós ====
+int conta_nos(Arvore *a){
+   if(a==NULL){
+      return 0;
+   }
+   return 1 + conta_nos(a->esq) + conta_nos(a->dir);
+}
 
 
 //========= Exercício 5 - calcula altura ====
@@ -105,8 +111,11 @@ int main (int argc, char *argv[]) {
    //in_ordem(a);
    pos_ordem(a);
    printf("\n");
-   int ex3 = pertence_arv(a, 'a');
+   int ex3 = pertence_arv(a, 'z');
    printf("%d", ex3);
+   printf("\n");
+   int qtn_nos = conta_nos(a);
+   printf("%d", qtn_nos);
 
    arv_libera (a);
 
