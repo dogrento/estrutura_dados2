@@ -87,11 +87,31 @@ int conta_nos(Arvore *a){
 
 
 //========= Exercício 5 - calcula altura ====
+int calcula_altura_arvore(Arvore *a){
+   if(a == NULL){
+      return -1;
+   } else {
+      int altura_esq = calcula_altura_arvore(a->esq);
+      int altura_dir = calcula_altura_arvore(a->dir);
+      if(altura_esq > altura_dir){
+         return altura_esq + 1;
+      } else {
+         return altura_dir + 1;
+      }
+   }
+}
 
 
 
 //========= Exercício 6 - conta folhas ====
-
+int conta_nos_folha(Arvore *a){
+   if(a==NULL){
+      return 0;
+   } else if(a->esq == NULL && a->dir == NULL){
+      return 1;
+   }
+   return conta_nos_folha(a->esq) + conta_nos_folha(a->dir);
+}
 
 
 int main (int argc, char *argv[]) {
@@ -115,7 +135,11 @@ int main (int argc, char *argv[]) {
    printf("%d", ex3);
    printf("\n");
    int qtn_nos = conta_nos(a);
-   printf("%d", qtn_nos);
+   printf("%d\n", qtn_nos);
+   int alt_nos = calcula_altura_arvore(a);
+   printf("%d\n", alt_nos);
+   int nos_folha = conta_nos_folha(a);
+   printf("%d\n", nos_folha);
 
    arv_libera (a);
 
