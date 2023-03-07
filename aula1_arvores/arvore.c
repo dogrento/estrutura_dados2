@@ -24,8 +24,25 @@ void arv_libera (Arvore* a) {
       free(a);
    }
 }
-
-//========= Exercício 2 - pré-ordem ====
+void print_arvore(Arvore *raiz, int level){
+   if(raiz != NULL){
+      print_arvore(raiz->dir, level+1);
+      printf("\n");
+      for(int i = 0; i < level;i++){
+         printf(" ");
+      }
+      printf("%c--|", raiz->info);
+      print_arvore(raiz->esq, level+1);
+   }
+}
+//========= Exercício 2 - pré-ordem (RED)====
+void pre_ordem(Arvore *raiz){
+   if(raiz != NULL){
+      printf("%c",raiz->info);
+      pre_ordem(raiz->esq);
+      pre_ordem(raiz->dir);
+   }
+}
 
 
 //========= Exercício 2 - in-ordem ====
@@ -60,10 +77,11 @@ int main (int argc, char *argv[]) {
        constroi_arv('f',cria_arv_vazia(),cria_arv_vazia())
      )
    );	
+   //print_arvore(a,0);
+   pre_ordem(a);
 
    arv_libera (a);
 
    return 0;
 }
-
 
