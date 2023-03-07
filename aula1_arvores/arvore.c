@@ -45,10 +45,24 @@ void pre_ordem(Arvore *raiz){
 }
 
 
-//========= Exercício 2 - in-ordem ====
+//========= Exercício 2 - in-ordem(ERD) ====
+void in_ordem(Arvore *raiz){
+   if(raiz != NULL){
+      in_ordem(raiz->esq);
+      printf("%c", raiz->info);
+      in_ordem(raiz->dir);
+   }
+}
 
 
-//========= Exercício 2 - pós-ordem ====
+//========= Exercício 2 - pós-ordem EDR====
+void pos_ordem(Arvore *raiz){
+   if(raiz!=NULL){
+      pos_ordem(raiz->esq);
+      pos_ordem(raiz->dir);
+      printf("%c", raiz->info);
+   }
+}   
 
 
 //========= Exercício 3 - pertence ====
@@ -78,7 +92,9 @@ int main (int argc, char *argv[]) {
      )
    );	
    //print_arvore(a,0);
-   pre_ordem(a);
+   //pre_ordem(a);
+   //in_ordem(a);
+   pos_ordem(a);
 
    arv_libera (a);
 
