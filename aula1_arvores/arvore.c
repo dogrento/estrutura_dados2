@@ -66,7 +66,16 @@ void pos_ordem(Arvore *raiz){
 
 
 //========= Exercício 3 - pertence ====
-
+int pertence_arv(Arvore *a, char c){
+   if(a!=NULL){
+      return 0;
+   }
+   else if(a->info == c){
+      return 1;
+   } else{
+      return pertence_arv(a->esq, c) || pertence_arv(a->dir, c);
+   }
+}
 
 //========= Exercício 4 - conta nós ====
 
@@ -95,6 +104,9 @@ int main (int argc, char *argv[]) {
    //pre_ordem(a);
    //in_ordem(a);
    pos_ordem(a);
+   printf("\n");
+   int ex3 = pertence_arv(a, 'a');
+   printf("%d", ex3);
 
    arv_libera (a);
 
